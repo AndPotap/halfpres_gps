@@ -4,7 +4,7 @@ This repository contains PyTorch code for for the paper
 
 [Low Precision Arithmetic for Fast Gaussian Processes](https://openreview.net/pdf?id=S3NOX_Ij9xc)
 
-by Wesley J. Maddox, Andres Potapczynski, and Andrew Gordon Wilson. 
+by Wesley J. Maddox\*, Andres Potapczynski\*, and Andrew Gordon Wilson. 
 
 ## Introduction
 
