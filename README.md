@@ -1,17 +1,25 @@
 # Low Precision Arithmetic for Fast Gaussian Processes
 
-<br>**Abstract**<br>
-*Low precision arithmetic has had a transformative effect on the training of neural
-networks, reducing computation, memory and energy requirements. However, despite its
-promise, low precision arithmetic has received little attention for Gaussian process (GP)
-training, largely because GPs require sophisticated linear algebra routines that are
-unstable in low precision. We study the different failure modes that can occur when
-training GPs in half precision. To circumvent these failure modes, we propose a
-multi-faceted approach involving conjugate gradients with re-orthogonalization, compact
-kernels, and preconditioners. Our approach significantly improves the numerical stability
-and practical performance of conjugate gradients in low precision over a wide range of
-settings, enabling GPs to train on 1.8 million data points in 10 hours on a single
-GPU, without requiring any sparse approximations*
+This repository contains PyTorch code for for the paper
+
+[Low Precision Arithmetic for Fast Gaussian Processes](https://openreview.net/pdf?id=S3NOX_Ij9xc)
+
+by Wesley J. Maddox, Andres Potapczynski, and Andrew Gordon Wilson. 
+
+## Introduction
+
+In this paper, we show how to speed up Gaussian processes by representing numbers in lower precision, while retaining accuracy. These methods involve a modification to conjugate gradients with re-orthogonalization, compact kernels, pre-conditioners, and mixed-precision representations. In many cases, these approaches can be used as a drop-in replacement for standard Gaussian process routines, or combined with other approaches to scalability. 
+
+
+Please cite our work if you find it useful:
+```bibtex
+@inproceedings{gplowprec2022,
+  title={Low precision arithmetic for fast Gaussian processes},
+  author={Maddox, Wesley J and Potapczynski, Andres and Wilson, Andrew Gordon},
+  booktitle={Uncertainty in Artificial Intelligence},
+  year={2022}
+}
+```
 
 ## Installation instructions
 * For Bayesian Benchmarks do not use the setup.py file. Instead (1) git clone the repo, (2) add the repo to the PYTHONPATH (needed for properly loading modules on the repo)
