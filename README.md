@@ -19,10 +19,19 @@ Please cite our work if you find it useful:
   year={2022}
 }
 ```
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/14368801/37633888-89fdc05a-2bca-11e8-88aa-dd3661a44c3f.png" width=250>
+  <img src="https://user-images.githubusercontent.com/14368801/37633885-89d809a0-2bca-11e8-8d57-3bd78734cea3.png" width=250>
+  <img src="https://user-images.githubusercontent.com/14368801/37633887-89e93784-2bca-11e8-9d71-a385ea72ff7c.png" width=250>
+</p>
 
 ## Installation instructions
 * For Bayesian Benchmarks do not use the setup.py file. Instead (1) git clone the repo, (2) add the repo to the PYTHONPATH (needed for properly loading modules on the repo)
 * Create a `logs` directory.
+
+## Requirements
+
+## File Structure
 
 ## Experiments
 To replicate the experimental results you can run
@@ -71,5 +80,14 @@ python3 experiments/runner.py \
 | `database_path` |  Path to save results. |
 | `with_adam` |  Flag for using ADAM as an optimizer. |
 
+## Examples
+
+
+
 ## Notebooks
 In `notebooks` you can also find an example of how to run the CG solvers.
+
+## Results
+
+## References
+* 

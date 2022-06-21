@@ -1,0 +1,15 @@
+numpy
+numba
+pandas
+matplotlib
+openpyxl
+scipy
+sklearn
+fire
+torch
+torchvision
+gpytorch
+botorch
+tqdm
+pyro-ppl
+pykeops
