@@ -12,7 +12,7 @@ In this paper, we show how to speed up Gaussian processes by representing number
 These methods involve a modification to conjugate gradients with re-orthogonalization, compact kernels, pre-conditioners, and mixed-precision representations. 
 In many cases, these approaches can be used as a drop-in replacement for standard Gaussian process routines, or combined with other scalable inference approaches. 
 In short, you should try this out! 
-Below we show the time that it takes to perform a Matrix-vector-multiply
+Below we show the time that it takes to perform a matrix-vector-multiply
 (MVM) and the accuracy of these MVMs using different summation strategies.
 
 <p align="center">
