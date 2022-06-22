@@ -145,7 +145,7 @@ python3 experiments/gpytorch_bb/runner.py --dataset=wilson_3droad --mll=remixed 
 In `notebooks` you can also find an example of how to run the CG solvers.
 
 ## Results
-**Below we have the RMSEs and training times** for an ARB RBF kernel on single and half
+**Below we have the RMSEs and training times** for an ARD RBF kernel on single and half
 precision on a suite of UCI datasets.
 
 <p align="center">
