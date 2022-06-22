@@ -8,13 +8,16 @@ by Wesley J. Maddox\*, Andres Potapczynski\*, and Andrew Gordon Wilson.
 
 ## Introduction
 
-In this paper, we show how to speed up Gaussian processes by representing numbers in lower precision, while retaining accuracy. These methods involve a modification to conjugate gradients with re-orthogonalization, compact kernels, pre-conditioners, and mixed-precision representations. In many cases, these approaches can be used as a drop-in replacement for standard Gaussian process routines, or combined with other scalable inference approaches. In short, you should try this out! 
-The right plot contains the comparison of GPs trained on different UCI datasets of
-various sizes and the left plot the reduction in MVM time when using half.
+In this paper, we show how to speed up Gaussian processes by representing numbers in lower precision, while retaining accuracy. 
+These methods involve a modification to conjugate gradients with re-orthogonalization, compact kernels, pre-conditioners, and mixed-precision representations. 
+In many cases, these approaches can be used as a drop-in replacement for standard Gaussian process routines, or combined with other scalable inference approaches. 
+In short, you should try this out! 
+Below we show the time that it takes to perform a Matrix-vector-multiply
+(MVM) and the accuracy of these MVMs using different summation strategies.
 
 <p align="center">
-  <img src="./figs/scatter.png" width=300, height=250>
   <img src="./figs/mvms.png" width=300, height=250>
+  <img src="./figs/res.png" width=300, height=250>
 </p>
 
 
@@ -142,24 +145,20 @@ python3 experiments/gpytorch_bb/runner.py --dataset=wilson_3droad --mll=remixed 
 In `notebooks` you can also find an example of how to run the CG solvers.
 
 ## Results
-*Below we have the RMSEs, NLLs and training times* with $\pm$ the standard deviation over 5
-different seeds. We ran a suite of UCI tasks for half and single precisions GPs and
-SVGPs.
+**Below we have the RMSEs and training times** for an ARB RBF kernel on single and half
+precision on a suite of UCI datasets.
 
-| Dataset | $(N, d)$ | RMSE (single) | RMSE (half) | Time (single) | Time (half) |
-| ---     | ---      | ---           |  ---        | ---           | --- |
-| PoleTele  | (13.5K, 26)  | 0.117  $\pm$ 0.004 | 0.121 $\pm$ 0.003 | 57.6 $\pm$ 0.6  | 88.3 $\pm$ 3.2 |
-| Elevators | (14.9K, 18)  | 0.364  $\pm$ 0.004 | 0.382 $\pm$ 0.001 | 58.4 $\pm$ 3.1  | 90.1 $\pm$ 2.9 |
-| Bike      | (15.6K, 17)  | 0.074  $\pm$ 0.003 | 0.083 $\pm$ 0.009 | 62.3 $\pm$ 0.7  | 85.6 $\pm$ 0.41 |
-| Kin40K    | (36K, 8)     | 0.099  $\pm$ 0.001 | 0.100 $\pm$ 0.003 | 65.5 $\pm$ 5.3  | 92.9 $\pm$ 0.28 |
-| Protein   | (41.1K, 9)   | 0.055  $\pm$ 0.006 | 0.635 $\pm$ 0.002 | 70.0 $\pm$ 5.7  | 115.7 $\pm$ 0.10 |
-| 3droad    | (391.4K, 3)  | 0.194  $\pm$ 0.010 | 0.215 $\pm$ 0.004 | 1,260 $\pm$ 35  | 1,003 $\pm$ 0.97 |
-| Song      | (463.8K, 90) | 0.761  $\pm$ 0.004 | 0.779 $\pm$ 0.022 | 24,357 $\pm$ 2,613 | 9,930 $\pm$ 130 |
-| Buzz      | (524.9K, 77) | 0.300  $\pm$ 0.010 | 0.448 $\pm$ 0.004 | 25,436 $\pm$ 1,200 | 23,127 $\pm$ 1,819 |
-| HouseElectric | (1,844.3K, 9) | 0.052  $\pm$ 0.002 | 0.051 $\pm$ 0.004 | 42,751 $\pm$ 2,180 | 36,025 $\pm$ 1,178 |
+<p align="center">
+  <img src="./figs/RMSE.png" width=450, height=250>
+</p>
 
-In terms of training time, *it is important to note that half precision can take more than
-single precision for two reasons*: (1) the KeOps compilations times are almost double in
+<p align="center">
+  <img src="./figs/time_1.png" width=300, height=250>
+  <img src="./figs/time_2.png" width=300, height=250>
+</p>
+
+In terms of training time, **it is important to note that half precision can take more than
+single precision for two reasons**: (1) the KeOps compilations times are almost double in
 half (this will improve in the future) and (2) the higher round-off error in
 mixed-precision CG implies a longer number of steps in order to reach the required
-tolerances.
+tolerances. For smaller datasets only the first reason applies.
