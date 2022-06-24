@@ -12,7 +12,7 @@ In this paper, **we show how to make Gaussian processes faster, while retaining 
 
 These methods involve a modification to conjugate gradients with re-orthogonalization, compact kernels, pre-conditioners, and mixed-precision representations. In many cases, these approaches can be used as a **drop-in replacement** for standard Gaussian process routines, or combined with other scalable inference approaches. In short, you should try this out! 
 
-In order to make predictions with Gaussian processes, we need to solve linear systems. Matrix multiplications are the computational bottleneck for iterative approaches like conjugate gradients. We see below that low-precision techniques enable substantially faster matrix multiplies, without sacrificing accuracy. However, just naively casting everything into half-precision does not provide good results. The details such as the summation startegy can have a big effect on accuracy. We use Kahan summation.
+In order to make predictions with Gaussian processes, we need to solve linear systems. Matrix multiplications are the computational bottleneck for iterative approaches like conjugate gradients. We see below that low-precision techniques enable substantially faster matrix vector multiplies, without sacrificing accuracy. However, just naively casting everything into half-precision does not provide good results. The details such as the summation startegy can have a big effect on accuracy. We use Kahan summation.
 
 <p align="center">
   <img src="./figs/mvms.png" width=300, height=250>
