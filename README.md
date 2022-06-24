@@ -8,7 +8,8 @@ by Wesley J. Maddox\*, Andres Potapczynski\*, and Andrew Gordon Wilson.
 
 ## Introduction
 
-In this paper, we show how to speed up Gaussian processes by representing numbers in lower precision, while retaining accuracy. 
+In this paper, **we show how to make Gaussian processes faster, while retaining accuracy**, by developing methods for low-precision computation.
+
 These methods involve a modification to conjugate gradients with re-orthogonalization, compact kernels, pre-conditioners, and mixed-precision representations. In many cases, these approaches can be used as a drop-in replacement for standard Gaussian process routines, or combined with other scalable inference approaches. In short, you should try this out! 
 
 In order to make predictions with Gaussian processes, we need to solve linear systems. Matrix multiplications are the computational bottleneck for iterative approaches like conjugate gradients. We see below that low-precision techniques enable substantially faster matrix multiplies, without sacrificing accuracy. However, just naively casting everything into half-precision does not provide good results. The details such as the summation startegy can have a big effect on accuracy. We use Kahan summation.
@@ -26,13 +27,13 @@ We also propose special modifications of CG for stability in low precision, and 
 </p>
 
 
-With these modifications, we see the RMSE in single and half precision are comparable over a wide range of datasets.
+With these modifications, we see the RMSE for GP predictions using single and half precision are comparable over a wide range of datasets.
 
 <p align="center">
   <img src="./figs/RMSE.png" width=450, height=250>
 </p>
 
-We also see that the training time can be substantially better in half precision for large datasets (e.g., 25000s vs 10000s). For smaller datasets, the runtimes are comparable, though single precision can be slightly faster (e.g., 200s vs 150s). There are two reasons that cause half precision to run slower: (1) we use KeOps for matrix multiplies, which has a longer compilation time; (2) higher round-off error can mean more CG steps are required to reach a desired tolerance. The fixed cost of (1) can become apparent on small datasets.
+We also see that the training time can be substantially better in half precision for large datasets (e.g., 10000s vs 250000s). For smaller datasets, the runtimes are comparable, though half precision can be slightly slower (e.g., 200s vs 150s). There are two reasons that can cause half precision to run slower: (1) we use KeOps for matrix multiplies, which has a longer compilation time; (2) higher round-off error can mean more CG steps are required to reach a desired tolerance. The fixed cost of (1) can become apparent on small datasets.
 
 <p align="center">
   <img src="./figs/time_1.png" width=300, height=250>
