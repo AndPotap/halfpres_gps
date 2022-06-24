@@ -40,6 +40,14 @@ And the training time can be substantially better in half precision for large da
   <img src="./figs/time_2.png" width=300, height=250>
 </p>
 
+Below are the training times taking out KeOps compilations times. In all cases, half
+takes less time than single.
+
+<p align="center">
+  <img src="./figs/time_1_wo.png" width=300, height=250>
+  <img src="./figs/time_2_wo.png" width=300, height=250>
+</p>
+
 ## Citation
 
 Please cite our work if you find it useful:
