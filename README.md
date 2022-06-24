@@ -25,6 +25,22 @@ We also propose special modifications of CG for stability in low precision, and 
   <img src="./figs/buzz.png" width=300, height=250>
 </p>
 
+
+With these modifications, we see the RMSE in single and half precision are comparable over a wide range of datasets.
+
+<p align="center">
+  <img src="./figs/RMSE.png" width=450, height=250>
+</p>
+
+We also see that the training time can be substantially better in half precision for large datasets. For smaller datasets, the runtimes are comparable, though single precision can be slightly faster (e.g., 200s vs 150s). There are two reasons that cause half precision to run slower: (1) we use KeOps for matrix multiplies, which has a longer compilation time; (2) higher round-off error can mean more CG steps are required to reach a desired tolerance. The fixed cost of (1) can become apparent on small datasets.
+
+<p align="center">
+  <img src="./figs/time_1.png" width=300, height=250>
+  <img src="./figs/time_2.png" width=300, height=250>
+</p>
+
+## Citation
+
 Please cite our work if you find it useful:
 
 ```bibtex
@@ -140,22 +156,3 @@ python3 experiments/gpytorch_bb/runner.py --dataset=wilson_3droad --mll=remixed 
 
 ## Notebooks
 In `notebooks` you can also find an example of how to run the CG solvers.
-
-## Results
-**Below we have the RMSEs and training times** for an ARD RBF kernel on single and half
-precision on a suite of UCI datasets.
-
-<p align="center">
-  <img src="./figs/RMSE.png" width=450, height=250>
-</p>
-
-<p align="center">
-  <img src="./figs/time_1.png" width=300, height=250>
-  <img src="./figs/time_2.png" width=300, height=250>
-</p>
-
-In terms of training time, **it is important to note that half precision can take more than
-single precision for two reasons**: (1) the KeOps compilations times are almost double in
-half (this will improve in the future) and (2) the higher round-off error in
-mixed-precision CG implies a longer number of steps in order to reach the required
-tolerances. For smaller datasets only the first reason applies.
