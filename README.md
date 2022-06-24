@@ -1,6 +1,6 @@
 # Low Precision Arithmetic for Fast Gaussian Processes
 
-This repository contains PyTorch code for for the paper
+This repository contains PyTorch code for for the UAI 2022 paper
 
 [Low Precision Arithmetic for Fast Gaussian Processes](https://openreview.net/pdf?id=S3NOX_Ij9xc)
 
