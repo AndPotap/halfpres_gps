@@ -11,14 +11,14 @@ by Wesley J. Maddox\*, Andres Potapczynski\*, and Andrew Gordon Wilson.
 In this paper, we show how to speed up Gaussian processes by representing numbers in lower precision, while retaining accuracy. 
 These methods involve a modification to conjugate gradients with re-orthogonalization, compact kernels, pre-conditioners, and mixed-precision representations. In many cases, these approaches can be used as a drop-in replacement for standard Gaussian process routines, or combined with other scalable inference approaches. In short, you should try this out! 
 
-In order to make predictions with Gaussian processes, we need to solve linear systems. Matrix multiplications are the computational bottleneck for iterative approaches like conjugate gradients. We see below that low-precision techniques enable substantially faster matrix multiplies, without sacrificing accuracy. However, just naively casting everything into half-precision does not work. The details such as the summation startegy can have a big effect on accuracy. We use Kahan summation.
+In order to make predictions with Gaussian processes, we need to solve linear systems. Matrix multiplications are the computational bottleneck for iterative approaches like conjugate gradients. We see below that low-precision techniques enable substantially faster matrix multiplies, without sacrificing accuracy. However, just naively casting everything into half-precision does not provide good results. The details such as the summation startegy can have a big effect on accuracy. We use Kahan summation.
 
 <p align="center">
   <img src="./figs/mvms.png" width=300, height=250>
   <img src="./figs/res.png" width=300, height=250>
 </p>
 
-We also propose special modifications of CG for stability in low precision, and use pre-conditioning. Pre-conditioning can make a big difference over no-preconditioning, but only a low-rank pre-conditioner is needed. 
+We also propose special modifications of CG for stability in low precision, and use pre-conditioning. Pre-conditioning can make a big difference over no-preconditioning, but a low-rank pre-conditioner often suffices.
 
 <p align="center">
   <img src="./figs/kegg.png" width=300, height=250>
