@@ -33,7 +33,7 @@ With these modifications, we see the RMSE for GP predictions using single and ha
   <img src="./figs/RMSE.png" width=450, height=250>
 </p>
 
-And the training time can be substantially better in half precision for large datasets (e.g., 10000s vs 25000s). For smaller datasets, the runtimes are comparable, though half precision can be slightly slower (e.g., 200s vs 150s). There are two reasons that can cause half precision to run slower: (1) we use KeOps for matrix multiplies, which has a longer compilation time in half precision; (2) higher round-off error can mean more CG steps are required to reach a desired tolerance. The fixed cost of (1) can become apparent on small datasets.
+And the training time can be substantially better in half precision for large datasets (e.g., 10000s vs 25000s). For smaller datasets, the runtimes are comparable, though half precision can be slightly slower (e.g., 200s vs 150s). There are two reasons half precision can run slower: (1) we use KeOps for matrix multiplies, which has a longer compilation time in half precision; (2) higher round-off error can mean more CG steps are required to reach a desired tolerance. The fixed cost of (1) can become apparent on small datasets.
 
 <p align="center">
   <img src="./figs/time_1.png" width=300, height=250>
