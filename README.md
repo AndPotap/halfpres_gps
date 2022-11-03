@@ -1,4 +1,4 @@
-# Low Precision Arithmetic for Fast Gaussian Processes
+# Low-Precision Arithmetic for Fast Gaussian Processes
 
 This repository contains PyTorch code for the UAI 2022 paper
 
