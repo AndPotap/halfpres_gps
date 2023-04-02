@@ -2,7 +2,7 @@
 
 This repository contains PyTorch code for the UAI 2022 paper
 
-[Low Precision Arithmetic for Fast Gaussian Processes](https://openreview.net/pdf?id=S3NOX_Ij9xc)
+[Low-Precision Arithmetic for Fast Gaussian Processes](https://openreview.net/pdf?id=S3NOX_Ij9xc)
 
 by Wesley J. Maddox\*, Andres Potapczynski\*, and Andrew Gordon Wilson. 
 
@@ -54,7 +54,7 @@ Please cite our work if you find it useful:
 
 ```bibtex
 @inproceedings{gplowprec2022,
-  title={Low precision arithmetic for fast Gaussian processes},
+  title={Low-precision arithmetic for fast Gaussian processes},
   author={Maddox, Wesley J and Potapczynski, Andres and Wilson, Andrew Gordon},
   booktitle={Uncertainty in Artificial Intelligence},
   year={2022}
